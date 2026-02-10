@@ -52,30 +52,10 @@
     }
   },
   "is_actual_tested": true,
-  "test_timestamp": "2026-02-10T19:18:12.104407",
+  "test_timestamp": "2026-02-10T19:25:59.015181",
   "test_message_used": "Hello, provide a sample response",
   "actual_test_response": {
-    "status": "success",
-    "result": {
-      "summary": "Provided a sample response showing the structure and usage for a Notion workspace management action.",
-      "data": {
-        "action_type": "general",
-        "page_title": "",
-        "page_url": "",
-        "details": "This is a sample response to demonstrate the required JSON structure for Notion Power Agent. Responses include a summary, detailed description, example metadata, and a sample item list for context."
-      },
-      "items": [
-        {
-          "title": "Sample Notion Page",
-          "url": "https://notion.so/sample-page",
-          "type": "page",
-          "last_edited": "2024-06-10T15:30:00Z"
-        }
-      ]
-    },
-    "metadata": {
-      "agent_name": "Notion Power Agent",
-      "timestamp": "2024-06-10T16:00:00Z"
-    }
-  }
+    "raw_text": "To list all your databases in Notion, I need confirmation on whether you would like to search your entire workspace or limit the search to a specific workspace, team, or parent page. Could you specify if you want all databases across your Notion account, or only within a certain section?"
+  },
+  "test_passed": false
 }

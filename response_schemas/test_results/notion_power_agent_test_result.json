@@ -1,46 +1,15 @@
 {
   "agent_name": "Notion Power Agent",
   "agent_id": "698b841e26bf0b7cb0c78ff3",
-  "test_message": "What can you help me with in my Notion workspace? Show me a sample of how you handle requests.",
-  "expected_purpose": "Comprehensive Notion workspace management - creating pages, searching content, updating pages, managing databases, and organizing workspace",
-  "timestamp": "2026-02-10T19:17:48.693597",
-  "is_valid_json": true,
-  "validation_errors": [],
+  "test_message": "List all my databases in Notion",
+  "expected_purpose": "Notion workspace management",
+  "timestamp": "2026-02-10T19:25:59.014472",
+  "is_valid_json": false,
+  "validation_errors": [
+    "Response is not valid JSON: Expecting value: line 1 column 1 (char 0)"
+  ],
   "actual_response": {
-    "status": "success",
-    "result": {
-      "summary": "Sample overview of assistant capabilities and example JSON response provided.",
-      "data": {
-        "action_type": "general",
-        "page_title": "",
-        "page_url": "",
-        "details": "I can assist you with creating new pages or databases, searching for existing pages, updating content or properties, organizing your workspace, managing database entries, and more within your Notion workspace. My responses provide clear summaries, action details, and structured lists of affected pages or results."
-      },
-      "items": [
-        {
-          "title": "Sample: Create a Project Database",
-          "url": "https://notion.so/sample-project-database-url",
-          "type": "database",
-          "last_edited": "2024-06-11T10:30:00Z"
-        },
-        {
-          "title": "Sample: Update Meeting Notes Page",
-          "url": "https://notion.so/sample-meeting-notes-page-url",
-          "type": "page",
-          "last_edited": "2024-06-05T14:45:00Z"
-        },
-        {
-          "title": "Sample: Search Results - 'Marketing'",
-          "url": "https://notion.so/search-marketing-results",
-          "type": "search",
-          "last_edited": "2024-06-07T09:15:00Z"
-        }
-      ]
-    },
-    "metadata": {
-      "agent_name": "Notion Power Agent",
-      "timestamp": "2024-06-11T12:00:00Z"
-    }
+    "raw_text": "To list all your databases in Notion, I need confirmation on whether you would like to search your entire workspace or limit the search to a specific workspace, team, or parent page. Could you specify if you want all databases across your Notion account, or only within a certain section?"
   },
-  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"summary\": \"Sample overview of assistant capabilities and example JSON response provided.\",\n    \"data\": {\n      \"action_type\": \"general\",\n      \"page_title\": \"\",\n      \"page_url\": \"\",\n      \"details\": \"I can assist you with creating new pages or databases, searching for existing pages, updating content or properties, organizing your workspace, managing database entries, and more within your Notion workspace. My responses provide clear summaries, action details, and structured lists of affected pages or results.\"\n    },\n    \"items\": [\n      {\n        \"title\": \"Sample: Create a Project Database\",\n        \"url\": \"https://notion.so/sample-project-database-url\",\n        \"type\": \"database\",\n        \"last_edited\": \"2024-06-11T10:30:00Z\"\n      },\n      {\n        \"title\": \"Sample: Update Meeting Notes Page\",\n        \"url\": \"https://notion.so/sample-meeting-notes-page-url\",\n        \"type\": \"page\",\n        \"last_edited\": \"2024-06-05T14:45:00Z\"\n      },\n      {\n        \"title\": \"Sample: Search Results - 'Marketing'\",\n        \"url\": \"https://notion.so/search-marketing-results\",\n        \"type\": \"search\",\n        \"last_edited\": \"2024-06-07T09:15:00Z\"\n      }\n    ]\n  },\n  \"metadata\": {\n    \"agent_name\": \"Notion Power Agent\",\n    \"timestamp\": \"2024-06-11T12:00:00Z\"\n  }\n}"
+  "raw_response": "To list all your databases in Notion, I need confirmation on whether you would like to search your entire workspace or limit the search to a specific workspace, team, or parent page. Could you specify if you want all databases across your Notion account, or only within a certain section?"
 }

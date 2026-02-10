@@ -15,12 +15,8 @@ import {
   FiCheck,
   FiMenu,
   FiX,
-  FiChevronDown,
   FiAlertCircle,
-  FiInfo,
   FiArrowRight,
-  FiDatabase,
-  FiEdit,
 } from 'react-icons/fi'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -28,8 +24,6 @@ import { Badge } from '@/components/ui/badge'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Separator } from '@/components/ui/separator'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 const AGENT_ID = '698b841e26bf0b7cb0c78ff3'
 
@@ -519,15 +513,56 @@ export default function Home() {
       })
 
       if (apiResult.success && apiResult.response) {
-        const agentData = apiResult.response?.result as AgentResult | undefined
-        const agentMsg: ChatMessage = {
-          id: `agent-${Date.now()}`,
-          role: 'agent',
-          content: typeof agentData === 'string' ? agentData : '',
-          agentResult: typeof agentData === 'object' ? agentData : undefined,
-          metadata: apiResult.response?.metadata,
-          timestamp: new Date().toISOString(),
+        const rawResult = apiResult.response?.result
+        const responseMessage = apiResult.response?.message
+
+        // Determine if result has structured AgentResult fields
+        const hasStructuredFields =
+          rawResult &&
+          typeof rawResult === 'object' &&
+          !Array.isArray(rawResult) &&
+          ('summary' in rawResult || 'data' in rawResult || 'items' in rawResult)
+
+        // Extract plain text from various response shapes
+        const extractPlainText = (): string => {
+          if (typeof rawResult === 'string') return rawResult
+          if (rawResult && typeof rawResult === 'object') {
+            if (typeof rawResult.text === 'string') return rawResult.text
+            if (typeof rawResult.message === 'string') return rawResult.message
+            if (typeof rawResult.content === 'string') return rawResult.content
+            if (typeof rawResult.response === 'string') return rawResult.response
+          }
+          if (typeof responseMessage === 'string' && responseMessage) return responseMessage
+          // Last resort: stringify the result if it's an object with unknown shape
+          if (rawResult && typeof rawResult === 'object' && Object.keys(rawResult).length > 0) {
+            try { return JSON.stringify(rawResult) } catch { return '' }
+          }
+          return ''
         }
+
+        let agentMsg: ChatMessage
+
+        if (hasStructuredFields) {
+          // Structured response with summary/data/items
+          agentMsg = {
+            id: `agent-${Date.now()}`,
+            role: 'agent',
+            content: '',
+            agentResult: rawResult as AgentResult,
+            metadata: apiResult.response?.metadata,
+            timestamp: new Date().toISOString(),
+          }
+        } else {
+          // Plain text response
+          agentMsg = {
+            id: `agent-${Date.now()}`,
+            role: 'agent',
+            content: extractPlainText(),
+            metadata: apiResult.response?.metadata,
+            timestamp: new Date().toISOString(),
+          }
+        }
+
         setMessages(prev => [...prev, agentMsg])
       } else {
         const errText = apiResult.error ?? apiResult.response?.message ?? 'An unexpected error occurred'
@@ -761,8 +796,15 @@ export default function Home() {
                       {msg.agentResult ? (
                         <AgentResponseCard result={msg.agentResult} metadata={msg.metadata} />
                       ) : msg.content ? (
-                        <div className="text-sm text-foreground leading-relaxed">
-                          {renderMarkdown(msg.content)}
+                        <div className="space-y-2">
+                          <div className="text-sm text-foreground leading-relaxed">
+                            {renderMarkdown(msg.content)}
+                          </div>
+                          {msg.metadata?.timestamp && (
+                            <p className="text-[10px] text-muted-foreground/60 mt-2">
+                              {msg.metadata?.agent_name ?? 'Agent'} -- {formatDate(msg.metadata.timestamp)}
+                            </p>
+                          )}
                         </div>
                       ) : (
                         <p className="text-sm text-muted-foreground italic">No response content</p>
