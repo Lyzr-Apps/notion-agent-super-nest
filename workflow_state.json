@@ -1,0 +1,53 @@
+{
+  "workflow": {
+    "nodes": [
+      {
+        "id": "input",
+        "type": "Input",
+        "label": "User Query",
+        "nodeCategory": "input"
+      },
+      {
+        "id": "notion_agent",
+        "type": "Agent",
+        "label": "Notion Power Agent",
+        "nodeCategory": "agent"
+      },
+      {
+        "id": "output",
+        "type": "Output",
+        "label": "Response",
+        "nodeCategory": "end"
+      }
+    ],
+    "edges": [
+      { "source": "input", "target": "notion_agent" },
+      { "source": "notion_agent", "target": "output" }
+    ]
+  },
+  "agents": [
+    {
+      "agent_id": "698b841e26bf0b7cb0c78ff3",
+      "name": "Notion Power Agent",
+      "description": "A comprehensive Notion management agent that enables creating, searching, updating, and organizing Notion workspace through natural conversation",
+      "model": "gpt-4.1",
+      "provider_id": "openai",
+      "temperature": 0.3,
+      "top_p": 0.9,
+      "agent_type": "text",
+      "has_tools": true,
+      "tools": ["NOTION_CREATE_PAGE", "NOTION_SEARCH_PAGES", "NOTION_UPDATE_PAGE", "NOTION_GET_PAGE", "NOTION_CREATE_DATABASE", "NOTION_LIST_DATABASES"],
+      "tool_source": "composio",
+      "tool_app": "notion",
+      "image_output_config": null,
+      "voice_config": null,
+      "file_output": false
+    }
+  ],
+  "agent_ids": ["698b841e26bf0b7cb0c78ff3"],
+  "rag_ids": [],
+  "schedule_ids": [],
+  "response_schemas": {
+    "notion_power_agent": "/app/nextjs-project/response_schemas/notion_power_agent_response.json"
+  }
+}

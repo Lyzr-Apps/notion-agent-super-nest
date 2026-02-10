@@ -1,0 +1,56 @@
+{
+  "agent_name": "Notion Power Agent",
+  "agent_id": "698b841e26bf0b7cb0c78ff3",
+  "test_input": "What can you help me with in my Notion workspace? Show me a sample of how you handle requests.",
+  "response": {
+    "status": "success",
+    "result": {
+      "summary": "Sample overview of assistant capabilities and example JSON response provided.",
+      "data": {
+        "action_type": "general",
+        "page_title": "",
+        "page_url": "",
+        "details": "I can assist you with creating new pages or databases, searching for existing pages, updating content or properties, organizing your workspace, managing database entries, and more within your Notion workspace. My responses provide clear summaries, action details, and structured lists of affected pages or results."
+      },
+      "items": [
+        {
+          "title": "Sample: Create a Project Database",
+          "url": "https://notion.so/sample-project-database-url",
+          "type": "database",
+          "last_edited": "2024-06-11T10:30:00Z"
+        },
+        {
+          "title": "Sample: Update Meeting Notes Page",
+          "url": "https://notion.so/sample-meeting-notes-page-url",
+          "type": "page",
+          "last_edited": "2024-06-05T14:45:00Z"
+        },
+        {
+          "title": "Sample: Search Results - 'Marketing'",
+          "url": "https://notion.so/search-marketing-results",
+          "type": "search",
+          "last_edited": "2024-06-07T09:15:00Z"
+        }
+      ]
+    },
+    "metadata": {
+      "agent_name": "Notion Power Agent",
+      "timestamp": "2024-06-11T12:00:00Z"
+    }
+  },
+  "field_types": {
+    "result.summary": "string",
+    "result.data": "object",
+    "result.data.action_type": "string",
+    "result.data.page_title": "string",
+    "result.data.page_url": "string",
+    "result.data.details": "string",
+    "result.items": "array",
+    "result.items[].title": "string",
+    "result.items[].url": "string",
+    "result.items[].type": "string",
+    "result.items[].last_edited": "string"
+  },
+  "status": "passed",
+  "timestamp": "2026-02-10T12:00:00Z"
+}

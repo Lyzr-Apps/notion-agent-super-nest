@@ -1,0 +1,81 @@
+{
+  "agent_name": "Notion Power Agent",
+  "agent_id": "698b841e26bf0b7cb0c78ff3",
+  "agent_purpose": "Comprehensive Notion workspace management - creating pages, searching content, updating pages, managing databases, and organizing workspace",
+  "description": "Returns structured Notion workspace operation results including a summary, detailed action data, and a list of affected or relevant Notion items (pages, databases, search results) with their titles, URLs, types, and last edited timestamps.",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "summary": "string",
+      "data": {
+        "action_type": "string",
+        "page_title": "string",
+        "page_url": "string",
+        "details": "string"
+      },
+      "items": [
+        {
+          "title": "string",
+          "url": "string",
+          "type": "string",
+          "last_edited": "string"
+        }
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "summary": "Provided a sample response showing the structure and usage for a Notion workspace management action.",
+      "data": {
+        "action_type": "general",
+        "page_title": "",
+        "page_url": "",
+        "details": "This is a sample response to demonstrate the required JSON structure for Notion Power Agent. Responses include a summary, detailed description, example metadata, and a sample item list for context."
+      },
+      "items": [
+        {
+          "title": "Sample Notion Page",
+          "url": "https://notion.so/sample-page",
+          "type": "page",
+          "last_edited": "2024-06-10T15:30:00Z"
+        }
+      ]
+    },
+    "metadata": {
+      "agent_name": "Notion Power Agent",
+      "timestamp": "2024-06-10T16:00:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-02-10T19:18:12.104407",
+  "test_message_used": "Hello, provide a sample response",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "summary": "Provided a sample response showing the structure and usage for a Notion workspace management action.",
+      "data": {
+        "action_type": "general",
+        "page_title": "",
+        "page_url": "",
+        "details": "This is a sample response to demonstrate the required JSON structure for Notion Power Agent. Responses include a summary, detailed description, example metadata, and a sample item list for context."
+      },
+      "items": [
+        {
+          "title": "Sample Notion Page",
+          "url": "https://notion.so/sample-page",
+          "type": "page",
+          "last_edited": "2024-06-10T15:30:00Z"
+        }
+      ]
+    },
+    "metadata": {
+      "agent_name": "Notion Power Agent",
+      "timestamp": "2024-06-10T16:00:00Z"
+    }
+  }
+}
